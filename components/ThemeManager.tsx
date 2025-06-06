@@ -63,19 +63,17 @@ export function ThemeManager() {
       {/* Palette options */}
       <Popover>
         <PopoverTrigger>
-          <Button variant="ghost" className="cursor-pointer">
-            <Palette strokeWidth={1.25} />
-          </Button>
+          <Palette strokeWidth={1.25} />
         </PopoverTrigger>
         <PopoverContent className="w-max">
           <div className="flex flex-col gap-3">
             {colorPalettes.map((c) => (
-              <button
+              <span
                 key={c}
                 onClick={() => switchPalette(c)}
                 className={`h-[25px] w-[25px] rounded-full cursor-pointer ${colorClassMap[c]}`}
                 title={c}
-              />
+              ></span>
             ))}
           </div>
         </PopoverContent>

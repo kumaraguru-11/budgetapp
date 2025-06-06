@@ -42,7 +42,7 @@ const items = [
 
 export default function page() {
   return (
-    <Sidebar className="w-40">
+    <Sidebar>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>

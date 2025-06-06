@@ -67,11 +67,14 @@ const layout = ({
   return (
     <SidebarProvider>
       <div className="flex">
-        <aside className="w-full">{sidebar}</aside>
-        <main className="flex-1">
+        {/* Sidebar with fixed width */}
+        <aside>{sidebar}</aside>
+
+        {/* Content area takes remaining space */}
+        <div className="flex-1">
           <header>{header}</header>
-          {main}
-        </main>
+          <main>{main}</main>
+        </div>
       </div>
     </SidebarProvider>
   );
