@@ -1,12 +1,7 @@
-// import React, { ReactNode, useContext } from "react";
-// import style from "./layout.module.css";
-// import {
-//   SidebarProvider,
-//   SidebarContent,
-//   SidebarTrigger,
-// } from "@/components/ui/sidebar";
+// import React, { ReactNode } from "react";
+// import { SidebarProvider } from "@/components/ui/sidebar";
 
-// const Layout = ({
+// const layout = ({
 //   sidebar,
 //   header,
 //   main,
@@ -17,45 +12,56 @@
 // }) => {
 //   return (
 //     <SidebarProvider>
-//       <LayoutBody sidebar={sidebar} header={header} main={main} />
+//       <div className="flex">
+//         {/* Sidebar with fixed width */}
+//         <aside>{sidebar}</aside>
+
+//         {/* Content area takes remaining space */}
+//         <div className="flex-1">
+//           <header>{header}</header>
+//           <main>{main}</main>
+//         </div>
+//       </div>
 //     </SidebarProvider>
 //   );
 // };
 
-// const LayoutBody = ({
-//   sidebar,
-//   header,
-//   main,
-// }: {
-//   sidebar: ReactNode;
-//   header: ReactNode;
-//   main: ReactNode;
-// }) => {
-//   // const { isCollapsed } = useContext(SidebarContent);
+// export default layout;
 
-//   return (
-//     <div className={style.container}>
-//       {/* Sidebar + Main Content Wrapper */}
-//       <div className={style.body}>
-//         {/* {!isCollapsed && <aside className={style.sidebar}>{sidebar}</aside>} */}
-//         <div className={style.content}>
-//           <header className={style.header}>
-//             <SidebarTrigger />
-//             {header}
-//           </header>
-//           <main className={style.main}>{main}</main>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Layout;
+// app/dashboard/layout.tsx
+"use client";
 
 import React, { ReactNode } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import styles from "./layout.module.css";
 
-const layout = ({
+const LayoutContent = ({
+  sidebar,
+  header,
+  main,
+}: {
+  sidebar: ReactNode;
+  header: ReactNode;
+  main: ReactNode;
+}) => {
+  // Remove usage of SidebarContext and isOpen, fallback to default sidebar class
+  return (
+    <div className={styles.container}>
+      <div className={styles.body}>
+        {/* Sidebar with default class */}
+        <aside className={styles.sidebar}>{sidebar}</aside>
+
+        {/* Content area */}
+        <div className={styles.content}>
+          <header className={styles.header}>{header}</header>
+          <main className={styles.main}>{main}</main>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Layout = ({
   sidebar,
   header,
   main,
@@ -66,18 +72,9 @@ const layout = ({
 }) => {
   return (
     <SidebarProvider>
-      <div className="flex">
-        {/* Sidebar with fixed width */}
-        <aside>{sidebar}</aside>
-
-        {/* Content area takes remaining space */}
-        <div className="flex-1">
-          <header>{header}</header>
-          <main>{main}</main>
-        </div>
-      </div>
+      <LayoutContent sidebar={sidebar} header={header} main={main} />
     </SidebarProvider>
   );
 };
 
-export default layout;
+export default Layout;
