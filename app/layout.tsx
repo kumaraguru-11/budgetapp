@@ -26,24 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        suppressHydrationWarning
       >
-        {/* <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        > */}
         <ThemeProvider
-          attribute="data-theme" // <html data-theme="…">
-          defaultTheme="default" // same as your current light theme
-          enableSystem // keep OS auto-switch if you like
-          themes={[
-            "default", // = your current  :root  light colours
-            "default-dark", // = your current  .dark  colours
-            "brand", // = shadcn palette (light)
-            "brand-dark", // = shadcn palette (dark)
-          ]}
+          attribute="data-theme"
+          defaultTheme="default"
+          enableSystem
         >
           {children}
         </ThemeProvider>

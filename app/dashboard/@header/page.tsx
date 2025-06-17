@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input";
 const page = () => {
   return (
     <div>
-      HEADER <SidebarTrigger />
-      <ThemeManager />
+      <SidebarTrigger />
+      {/* <ThemeManager /> */}
     </div>
   );
 };
